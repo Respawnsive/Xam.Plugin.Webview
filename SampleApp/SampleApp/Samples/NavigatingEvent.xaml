@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:fwv="clr-namespace:Xam.Plugin.WebView.Abstractions;assembly=Xam.Plugin.WebView.Abstractions"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Navigating Event"
-             x:Class="SampleApp.Samples.NavigatingEvent">
+<ContentPage
+    x:Class="SampleApp.Samples.NavigatingEvent"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fwv="clr-namespace:Xam.Plugin.WebView.Abstractions;assembly=Xam.Plugin.WebView.Abstractions"
+    Title="Navigating Event">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -14,14 +15,37 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <fwv:FormsWebView x:Name="WebContent" Grid.Row="0" Grid.Column="0" Source="{Binding Uri}" />
-        <Button HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="Reload" Grid.Row="1" Grid.Column="0" Command="{Binding ReloadCommand}" />
+        <fwv:FormsWebView
+            x:Name="WebContent"
+            Grid.Row="0"
+            Grid.Column="0"
+            Source="{Binding Uri}" />
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            Command="{Binding ReloadCommand}"
+            HorizontalOptions="FillAndExpand"
+            Text="Reload"
+            VerticalOptions="FillAndExpand" />
 
-        <BoxView x:Name="Box" IsVisible="{Binding Source={x:Reference WebContent}, Path=Navigating}" BackgroundColor="#2f2f2f"
-                 HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" />
-        
-        <ActivityIndicator x:Name="Spinner" IsRunning="True" IsVisible="{Binding Source={x:Reference WebContent}, Path=Navigating}" IsEnabled="True"
-                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" />
+        <BoxView
+            x:Name="Box"
+            Grid.Row="0"
+            Grid.Column="0"
+            BackgroundColor="#2f2f2f"
+            HorizontalOptions="FillAndExpand"
+            IsVisible="{Binding Source={x:Reference WebContent}, Path=Navigating}"
+            VerticalOptions="FillAndExpand" />
+
+        <ActivityIndicator
+            x:Name="Spinner"
+            Grid.Row="0"
+            Grid.Column="0"
+            HorizontalOptions="FillAndExpand"
+            IsEnabled="True"
+            IsRunning="True"
+            IsVisible="{Binding Source={x:Reference WebContent}, Path=Navigating}"
+            VerticalOptions="FillAndExpand" />
     </Grid>
 
 </ContentPage>

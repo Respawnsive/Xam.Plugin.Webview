@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xam.Plugin.WebView.Abstractions.Delegates;
 using Xam.Plugin.WebView.Abstractions.Enumerations;
 using Xam.Plugin.WebView.Abstractions.Models;
@@ -279,7 +280,45 @@ namespace Xam.Plugin.WebView.Abstractions
             set => SetValue(PasswordProperty, value);
         }
 
+        /// <summary>
+        /// Invoked when navigation begins, for example when the source is set.
+        /// </summary>
+        public ICommand NavigationStartedCommand
+        {
+            get => (ICommand)GetValue(NavigationStartedCommandProperty);
+            set => SetValue(NavigationStartedCommandProperty, value);
+        }
+
+        /// <summary>
+        /// Invoked when navigation is completed. This can be either as the result of a valid navigation, or on an error.
+        /// Returns the URL of the page navigated to.
+        /// </summary>
+        public ICommand NavigationCompletedCommand
+        {
+            get => (ICommand)GetValue(NavigationCompletedCommandProperty);
+            set => SetValue(NavigationCompletedCommandProperty, value);
+        }
+
+        /// <summary>
+        /// Invoked when navigation fires an error. By default this uses the native systems error codes.
+        /// </summary>
+        public ICommand NavigationFailedCommand
+        {
+            get => (ICommand)GetValue(NavigationFailedCommandProperty);
+            set => SetValue(NavigationFailedCommandProperty, value);
+        }
+
+        /// <summary>
+        /// Invoked when the content on the DOM is ready. All your calls to Javascript using C# should be performed after this is fired.
+        /// </summary>
+        public ICommand ContentLoadedCommand
+        {
+            get => (ICommand)GetValue(ContentLoadedCommandProperty);
+            set => SetValue(ContentLoadedCommandProperty, value);
+        }
+
         // All code which should be hidden from the end user goes here
+
         #region Internals
 
         internal DecisionHandlerDelegate HandleNavigationStartRequest(string uri)
@@ -298,22 +337,35 @@ namespace Xam.Plugin.WebView.Abstractions
             };
 
             OnNavigationStarted?.Invoke(this, handler);
+
+            if (NavigationStartedCommand != null && NavigationStartedCommand.CanExecute(handler))
+                NavigationStartedCommand.Execute(handler);
+
             return handler;
         }
 
         internal void HandleNavigationCompleted(string uri)
         {
             OnNavigationCompleted?.Invoke(this, uri);
+
+            if (NavigationCompletedCommand != null && NavigationCompletedCommand.CanExecute(uri))
+                NavigationCompletedCommand.Execute(uri);
         }
 
         internal void HandleNavigationError(int errorCode)
         {
             OnNavigationError?.Invoke(this, errorCode);
+
+            if (NavigationFailedCommand != null && NavigationFailedCommand.CanExecute(errorCode))
+                NavigationFailedCommand.Execute(errorCode);
         }
 
         internal void HandleContentLoaded()
         {
             OnContentLoaded?.Invoke(this, EventArgs.Empty);
+
+            if (ContentLoadedCommand != null && ContentLoadedCommand.CanExecute(null))
+                ContentLoadedCommand.Execute(null);
         }
 
         internal void HandleScriptReceived(string data)

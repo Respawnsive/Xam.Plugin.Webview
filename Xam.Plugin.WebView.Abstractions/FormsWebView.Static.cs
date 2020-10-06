@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Windows.Input;
 using Xam.Plugin.WebView.Abstractions.Enumerations;
 using Xamarin.Forms;
 
@@ -139,5 +140,25 @@ namespace Xam.Plugin.WebView.Abstractions
         /// A bindable property for the Username property.
         /// </summary>
         public static readonly BindableProperty PasswordProperty = BindableProperty.Create(nameof(Password), typeof(string), typeof(FormsWebView), "");
+
+        /// <summary>
+        /// A bindable property for the NavigationStartedCommand property.
+        /// </summary>
+        public static readonly BindableProperty NavigationStartedCommandProperty = BindableProperty.Create(nameof(NavigationStartedCommand), typeof(ICommand), typeof(FormsWebView));
+
+        /// <summary>
+        /// A bindable property for the NavigationCompletedCommand property.
+        /// </summary>
+        public static readonly BindableProperty NavigationCompletedCommandProperty = BindableProperty.Create(nameof(NavigationCompletedCommand), typeof(ICommand), typeof(FormsWebView));
+
+        /// <summary>
+        /// A bindable property for the NavigationFailedCommand property.
+        /// </summary>
+        public static readonly BindableProperty NavigationFailedCommandProperty = BindableProperty.Create(nameof(NavigationFailedCommand), typeof(ICommand), typeof(FormsWebView));
+
+        /// <summary>
+        /// A bindable property for the ContentLoadedCommand property.
+        /// </summary>
+        public static readonly BindableProperty ContentLoadedCommandProperty = BindableProperty.Create(nameof(ContentLoadedCommand), typeof(ICommand), typeof(FormsWebView));
     }
 }

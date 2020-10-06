@@ -22,10 +22,10 @@
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="4"
+            NavigationStartedCommand="{Binding NavigationStartedCommand}"
             OnContentLoaded="FormsWebView_OnContentLoaded"
             OnNavigationCompleted="FormsWebView_OnNavigationCompleted"
             OnNavigationError="FormsWebView_OnNavigationError"
-            OnNavigationStarted="FormsWebView_OnNavigationStarted"
             Source="{Binding Uri}" />
 
         <Label

@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-
+using Xam.Plugin.WebView.Abstractions.Delegates;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,6 +19,18 @@ namespace SampleApp.Samples
 
         public class NavigationEventsViewModel : INotifyPropertyChanged
         {
+
+            Command<DecisionHandlerDelegate> _navigationStartedCommand;
+
+            public Command<DecisionHandlerDelegate> NavigationStartedCommand
+            {
+                get => _navigationStartedCommand;
+                set
+                {
+                    _navigationStartedCommand = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NavigationStartedCommand)));
+                }
+            }
 
             Command _errorCommand;
 
@@ -70,6 +82,11 @@ namespace SampleApp.Samples
 
             public NavigationEventsViewModel()
             {
+                NavigationStartedCommand = new Command<DecisionHandlerDelegate>(args =>
+                {
+
+                });
+
                 ReloadCommand = new Command(() =>
                 {
                     if (Uri.Equals("https://www.google.co.uk"))

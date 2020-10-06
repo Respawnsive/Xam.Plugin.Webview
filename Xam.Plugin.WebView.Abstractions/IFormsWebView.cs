@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xam.Plugin.WebView.Abstractions.Delegates;
 using Xam.Plugin.WebView.Abstractions.Enumerations;
 
@@ -52,5 +53,13 @@ namespace Xam.Plugin.WebView.Abstractions
         string Username { get; set; }
 
         string Password { get; set; }
+
+        ICommand NavigationStartedCommand { get; set; }
+
+        ICommand NavigationCompletedCommand { get; set; }
+
+        ICommand NavigationFailedCommand { get; set; }
+
+        ICommand ContentLoadedCommand { get; set; }
     }
 }

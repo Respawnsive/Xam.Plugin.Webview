@@ -1,44 +1,33 @@
-<?xml version="1.0"?>
-<package>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Xam.Plugin.WebView</id>
-    <version>2.1.3</version>
+    <version>3.0.0</version>
     <title>WebView Plugin for Xamarin Forms</title>
-    <authors>Ryan Dixon</authors>
-    <owners>Ryan Dixon, Vistair</owners>
+    <authors>Respawnsive,Ryan Dixon</authors>
+    <owners>Respawnsive</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://s18.postimg.org/wjfexgtnt/FWV.png</iconUrl>
     <description>A simple lightweight HybridWebView designed to work with Xamarin Forms</description>
-    <releaseNotes>Expand the amount of url's which can be cancelled on Android</releaseNotes>
-	<iconUrl>https://s18.postimg.org/wjfexgtnt/FWV.png</iconUrl>
     <tags>Plugins, Xamarin, WebView, Web, HTML, Forms, Android, iOS, UWP, WinRT</tags>
     <dependencies>
-			<group targetFramework="portable-net45+win8+wpa81+wp8">
-                <dependency id="Newtonsoft.Json" version="10.0.3"/>
-			</group>
-			<group targetFramework="netstandard1.0">
-                <dependency id="Newtonsoft.Json" version="10.0.3"/>
-				<dependency id="NETStandard.Library" version="1.6.1" />
-			</group>
-			<group targetFramework="uap">
-                <dependency id="Newtonsoft.Json" version="10.0.3"/>
-			</group>
-            <group targetFramework="Xamarin.Mac20">
-                <dependency id="Newtonsoft.Json" version="10.0.3"/>
-            </group>
-		</dependencies>
+      <dependency id="Newtonsoft.Json" version="12.0.3" />
+    </dependencies>
   </metadata>
   <files>
-        <!-- Readme -->
-        <file src="readme.txt" target="" />
-        <!-- Core -->
-		<file src="Xam.Plugin.WebView.Abstractions\bin\Release\netstandard1.0\Xam.Plugin.WebView.*" target="lib\netstandard1.0" />
-		<!-- UWP -->
-		<file src="Xam.Plugin.WebView.UWP\bin\Release\Xam.Plugin.WebView.*" target="lib\uap10.0" />
-		<!-- Android -->
-		<file src="Xam.Plugin.WebView.Droid\bin\Release\Xam.Plugin.WebView.*" target="lib\MonoAndroid10" />
-		<!-- iOS -->
-		<file src="Xam.Plugin.WebView.iOS\bin\Release\Xam.Plugin.WebView.*" target="lib\Xamarin.iOS10" />
-        <!-- MacOS -->
-		<file src="Xam.Plugin.WebView.MacOS\bin\Release\Xam.Plugin.WebView.*" target="lib\Xamarin.Mac20" />
+    <file src="lib\MonoAndroid\Xam.Plugin.WebView.Abstractions.dll" target="lib\MonoAndroid\Xam.Plugin.WebView.Abstractions.dll" />
+    <file src="lib\MonoAndroid\Xam.Plugin.WebView.Abstractions.pdb" target="lib\MonoAndroid\Xam.Plugin.WebView.Abstractions.pdb" />
+    <file src="lib\MonoAndroid\Xam.Plugin.WebView.Droid.dll" target="lib\MonoAndroid\Xam.Plugin.WebView.Droid.dll" />
+    <file src="lib\MonoAndroid\Xam.Plugin.WebView.Droid.pdb" target="lib\MonoAndroid\Xam.Plugin.WebView.Droid.pdb" />
+    <file src="lib\netstandard2.0\Xam.Plugin.WebView.Abstractions.dll" target="lib\netstandard2.0\Xam.Plugin.WebView.Abstractions.dll" />
+    <file src="lib\netstandard2.0\Xam.Plugin.WebView.Abstractions.pdb" target="lib\netstandard2.0\Xam.Plugin.WebView.Abstractions.pdb" />
+    <file src="lib\uap10.0\Xam.Plugin.WebView.Abstractions.dll" target="lib\uap10.0\Xam.Plugin.WebView.Abstractions.dll" />
+    <file src="lib\uap10.0\Xam.Plugin.WebView.Abstractions.pdb" target="lib\uap10.0\Xam.Plugin.WebView.Abstractions.pdb" />
+    <file src="lib\uap10.0\Xam.Plugin.WebView.UWP.dll" target="lib\uap10.0\Xam.Plugin.WebView.UWP.dll" />
+    <file src="lib\uap10.0\Xam.Plugin.WebView.UWP.pdb" target="lib\uap10.0\Xam.Plugin.WebView.UWP.pdb" />
+    <file src="lib\xamarinios\Xam.Plugin.WebView.Abstractions.dll" target="lib\xamarinios\Xam.Plugin.WebView.Abstractions.dll" />
+    <file src="lib\xamarinios\Xam.Plugin.WebView.Abstractions.pdb" target="lib\xamarinios\Xam.Plugin.WebView.Abstractions.pdb" />
+    <file src="lib\xamarinios\Xam.Plugin.WebView.iOS.dll" target="lib\xamarinios\Xam.Plugin.WebView.iOS.dll" />
+    <file src="lib\xamarinios\Xam.Plugin.WebView.iOS.pdb" target="lib\xamarinios\Xam.Plugin.WebView.iOS.pdb" />
   </files>
 </package>
